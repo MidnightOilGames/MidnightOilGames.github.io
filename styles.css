@@ -1,0 +1,684 @@
+/* ============================
+   THEME VARIABLES
+============================ */
+
+:root {
+    /* defaults (will be overridden by theme classes) */
+    --bg-main: #0d0d0d;
+    --bg-panel: #101010;
+    --bg-card: #181818;
+    --bg-hero: #141414;
+
+    --text-main: #f0f0f0;
+    --text-muted: #bbbbbb;
+
+    --border-soft: #222222;
+    --border-card: #2c2c2c;
+    --border-placeholder: #555555;
+
+    --accent: #c96a41;
+    --accent-hover: #b05b34;
+    --accent-soft: #ffb987;
+
+    --header-bg: rgba(0, 0, 0, 0.6);
+    --footer-bg: #0a0a0a;
+    --placeholder-text: #999999;
+    --placeholder-border: #555555;
+}
+
+/* DARK THEME */
+
+body.theme-dark {
+    --bg-main: #0d0d0d;
+    --bg-panel: #101010;
+    --bg-card: #181818;
+    --bg-hero: #141414;
+
+    --text-main: #f0f0f0;
+    --text-muted: #bbbbbb;
+
+    --border-soft: #222222;
+    --border-card: #2c2c2c;
+    --border-placeholder: #555555;
+
+    --accent: #c96a41;
+    --accent-hover: #b05b34;
+    --accent-soft: #ffb987;
+
+    --header-bg: rgba(0, 0, 0, 0.6);
+    --footer-bg: #0a0a0a;
+    --placeholder-text: #999999;
+    --placeholder-border: #555555;
+}
+
+/* LIGHT THEME */
+
+body.theme-light {
+    --bg-main: #f7f3eb;
+    --bg-panel: #ffffff;
+    --bg-card: #ffffff;
+    --bg-hero: #f5eee4;
+
+    --text-main: #222222;
+    --text-muted: #666666;
+
+    --border-soft: #d5ccc0;
+    --border-card: #dad0c3;
+    --border-placeholder: #c8bda8;
+
+    --accent: #c96a41;
+    --accent-hover: #a54f2c;
+    --accent-soft: #e7b28b;
+
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --footer-bg: #f0e6d8;
+    --placeholder-text: #7a6b55;
+    --placeholder-border: #c8bda8;
+}
+
+/* ============================
+   GLOBAL RESET + BASE
+============================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ============================
+   NAVBAR
+============================ */
+
+header {
+    width: 100%;
+    padding: 20px 50px;
+    background: var(--header-bg);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    margin-left: 22px;
+    color: var(--text-muted);
+    font-weight: 400;
+    transition: 0.2s;
+}
+
+nav a:hover,
+nav a.active {
+    color: var(--accent-soft);
+}
+
+/* THEME TOGGLE BUTTON */
+
+.theme-toggle {
+    margin-left: 24px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+    border-color: var(--accent-soft);
+}
+
+
+/* ============================
+   HERO SECTION
+============================ */
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 140px 10% 120px;
+    min-height: 80vh;
+}
+
+.dark-hero {
+    background: var(--bg-hero);
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 70px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tagline {
+    font-size: 22px;
+    color: var(--text-muted);
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 14px 32px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    padding: 14px 32px;
+    border: 2px solid var(--border-soft);
+    border-radius: 8px;
+    font-size: 18px;
+    color: var(--text-main);
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.hero-media {
+    max-width: 45%;
+}
+
+.media-placeholder {
+    width: 100%;
+    height: 300px;
+    border: 2px dashed var(--placeholder-border);
+    border-radius: 14px;
+    color: var(--placeholder-text);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* ============================
+   SECTION TITLES
+============================ */
+
+.section-title {
+    font-size: 38px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 50px;
+}
+
+
+/* ============================
+   CORE FEATURES
+============================ */
+
+.core-section {
+    padding: 100px 12%;
+    background: var(--bg-panel);
+}
+
+.feature-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    width: 30%;
+    min-width: 280px;
+    background: var(--bg-card);
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid var(--border-card);
+    transition: 0.3s;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+}
+
+.feature-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+}
+
+
+/* ============================
+   GAME PHASES
+============================ */
+
+.phases-section {
+    padding: 120px 10%;
+    background: var(--bg-main);
+}
+
+.phase-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 140px;
+}
+
+.phase-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.phase-text {
+    width: 48%;
+}
+
+.phase-text h4 {
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.phase-text h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.phase-text p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.phase-media {
+    width: 48%;
+}
+
+.phase-media .media-placeholder {
+    height: 260px;
+}
+
+
+/* ============================
+   TEAM SECTION
+============================ */
+
+.team-section {
+    padding: 40px 12% 60px;   /* top 40, sides 12%, bottom 60 */
+    background: var(--bg-panel);
+}
+
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.team-card {
+    width: 260px;
+    background: var(--bg-card);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid var(--border-card);
+}
+
+.team-card h3 {
+    margin-bottom: 6px;
+}
+
+.team-card p {
+    color: var(--text-muted);
+}
+
+.portrait-placeholder {
+    width: 100%;
+    height: 200px;
+    border: 2px dashed var(--placeholder-border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    color: var(--placeholder-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* ============================
+   FAQ SECTION
+============================ */
+
+.faq-section {
+    padding: 120px 12%;
+    background: var(--bg-main);
+}
+
+.faq-item {
+    margin-bottom: 40px;
+}
+
+.faq-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--accent);
+}
+
+.faq-item p {
+    color: var(--text-main);
+}
+
+
+/* ============================
+   DEVLOG TIMELINE (basic)
+============================ */
+
+.timeline {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.timeline-entry {
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-card);
+    padding: 20px 24px;
+}
+
+.timeline-date {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.timeline-content h3 {
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    color: var(--text-muted);
+    margin-bottom: 14px;
+}
+
+.timeline-media .media-placeholder {
+    height: 200px;
+}
+
+
+/* ============================
+   FOOTER
+============================ */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--footer-bg);
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-soft);
+}
+
+
+/* ============================
+   ANIMATIONS (for script.js)
+============================ */
+
+.fade-in,
+.slide-left,
+.slide-right,
+.slide-up {
+    opacity: 0;
+}
+
+.fade-in.active {
+    animation: fadeIn 1.4s ease forwards;
+}
+
+.slide-left.active {
+    animation: slideLeft 1.2s ease forwards;
+}
+
+.slide-right.active {
+    animation: slideRight 1.2s ease forwards;
+}
+
+.slide-up.active {
+    animation: slideUp 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(40px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        padding: 120px 8% 80px;
+        text-align: center;
+    }
+
+    .hero-content,
+    .hero-media {
+        max-width: 100%;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .feature-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card {
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .phase-row {
+        flex-direction: column;
+        gap: 24px;
+        margin-bottom: 80px;
+    }
+
+    .phase-row.reverse {
+        flex-direction: column;
+    }
+
+    .phase-text,
+    .phase-media {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 14px 18px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    nav a {
+        margin-left: 14px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .tagline {
+        font-size: 18px;
+    }
+}
+
+/* Team category labels */
+.team-category {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+/* Hover animation for team cards */
+.team-card {
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+}
+
+/* ==========================
+   Scroll Indicator Arrow
+========================== */
+
+.scroll-indicator {
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.scroll-arrow {
+    width: 22px;
+    height: 22px;
+    border-left: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    transform: rotate(-45deg);
+    animation: arrowFloat 1.5s infinite ease-in-out;
+}
+
+@keyframes arrowFloat {
+    0%   { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+    50%  { transform: translateY(8px) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+}
+
+body.scrolled .scroll-indicator {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.phase-gif {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 14px;
+    border: 2px solid var(--border-soft);
+    object-fit: cover;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+.team-portrait {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px dashed var(--border-soft);
+    background-color: var(--surface);
+    margin-bottom: 12px;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Going Once! – Midnight Oil</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="dark">
+
+<!-- ======================
+        NAVBAR
+======================= -->
+<header id="navbar">
+    <div class="logo">Midnight Oil</div>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="faq.html">FAQ</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <span class="toggle-icon">🌙</span>
+        <span class="toggle-label">Dark</span>
+    </button>
+</header>
+
+
+<!-- ======================
+        HERO SECTION
+======================= -->
+<section id="home" class="hero dark-hero fade-in">
+    <div class="hero-content">
+        <h1>GOING ONCE!</h1>
+        <p class="tagline">A cozy art-inspection & auction house simulator.</p>
+
+        <div class="hero-buttons">
+            <a href="#game" class="btn-outline">Learn About the Game</a>
+            <a href="#phases" class="btn-outline">See the Gameplay Loop</a>
+        </div>
+    </div>
+
+    <div class="hero-media">
+        <div class="media-placeholder">
+            Gameplay Trailer / GIF<br>(coming soon)
+        </div>
+    </div>
+</section>
+
+<div class="scroll-indicator fade-in">
+    <span class="scroll-arrow"></span>
+</div>
+
+<!-- ======================
+        CORE EXPERIENCE
+======================= -->
+<section id="game" class="core-section fade-in">
+    <h2 class="section-title">Inspect. Curate. Auction.</h2>
+    <p class="section-subtitle">Running an art auction house has never been more intense—or cozy.</p>
+
+    <div class="feature-grid">
+        <div class="feature-card slide-left">
+            <h3>🔍 Inspect Fine Art</h3>
+            <p>Rotate, zoom, and Examine each piece using tools. Uncover frauds, hidden markings, and suspicious signatures.</p>
+        </div>
+
+        <div class="feature-card slide-up">
+            <h3>🏛️ Arrange Your Gallery</h3>
+            <p>Arrange pieces in your showroom, learn NPC preferences through dialogue, and prepare your gallery for auction night.</p>
+        </div>
+
+        <div class="feature-card slide-right">
+            <h3>🔨 Run Live Auctions</h3>
+            <p>Accept bids, activate auctioneer abilities, and manage NPC behavior in fast-paced bidding rounds.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ======================
+        GAME PHASES
+======================= -->
+<section id="phases" class="phases-section">
+
+    <!-- PHASE 1 -->
+    <div class="phase-row fade-in">
+        <div class="phase-text">
+            <h4>PHASE I — BUYING</h4>
+            <h2>Backroom deals and risky purchases.</h2>
+            <p>
+                Meet sellers, inspect their art using the tools, and decide
+                whether to buy, haggle, or reject.
+            </p>
+        </div>
+
+        <div class="phase-media">
+            <img src="images/rimuru.gif" alt="Phase 1 gameplay" class="phase-gif">
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase-row reverse fade-in">
+        <div class="phase-media">
+            <div class="media-placeholder">
+                Phase 2 GIF<br>(coming soon)
+            </div>
+        </div>
+
+        <div class="phase-text">
+            <h4>PHASE II — GALLERY</h4>
+            <h2>Manage the floor and observe your guests.</h2>
+            <p>
+                Arrange paintings and sculptures on display, talk to NPCs, and learn their tastes. 
+                The relationships you build here affect how aggressively they bid during auctions.
+            </p>
+        </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase-row fade-in">
+        <div class="phase-text">
+            <h4>PHASE III — AUCTION</h4>
+            <h2>Under the spotlight, every choice is public.</h2>
+            <p>
+                Accept bids on time, manage the pacing of the auction, and use auctioneer abilities
+                to hype or calm the room. Sell a forgery or misjudge a bid and your reputation may never recover.
+            </p>
+        </div>
+
+        <div class="phase-media">
+            <div class="media-placeholder">
+                Phase 3 GIF<br>(coming soon)
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ======================
+        FOOTER
+======================= -->
+<footer>
+    © 2025 Midnight Oil — Going Once!
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
