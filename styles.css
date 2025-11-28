@@ -673,12 +673,52 @@ body.scrolled .scroll-indicator {
     height: 200px;
     object-fit: cover;
     border-radius: 12px;
-    border: 2px dashed var(--border-soft);
+    border: 2px solid var(--border-soft);
     background-color: var(--surface);
     margin-bottom: 12px;
     display: block;
     box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
+/* =======================================
+   GIANT FADED BACKGROUND LOGO FOR HERO
+   ======================================= */
 
+.hero {
+    position: relative; /* required so ::before can attach */
+    overflow: hidden;   /* prevents logo from sticking out */
+}
+
+/* Move logo to the right side of the hero */
+.hero::before {
+    content: "";
+    position: absolute;
+    right: 5%;           /* move toward the right edge */
+    top: 50%;            /* center vertically */
+    width: 750px;
+    height: 750px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: translateY(-50%); /* vertical centering only */
+    pointer-events: none;
+    z-index: 0;
+}
+
+#home.hero::before {
+    display: none !important;
+}
+
+
+/* Light mode → normal logo */
+body.theme-light .hero::before {
+    background-image: url("images/Full Logo.png");
+    opacity: 0.11;
+}
+
+/* Dark mode → white logo */
+body.theme-dark .hero::before {
+    background-image: url("images/Full Logo_White.png");
+    opacity: 0.18; /* stronger for visibility */
+}
 
