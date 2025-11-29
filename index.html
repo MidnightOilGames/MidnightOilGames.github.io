@@ -9,13 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="dark">
+<body class="theme-dark">
 
 <!-- ======================
         NAVBAR
 ======================= -->
 <header id="navbar">
-    <div class="logo">Midnight Oil</div>
+<div class="logo">
+    <img class="logo-img" src="images/Icon Logo.png" alt="Logo">
+    <span>Midnight Oil</span>
+</div>
+
 
     <nav>
         <a href="index.html" class="active">Home</a>
@@ -46,11 +50,13 @@
         </div>
     </div>
 
-    <div class="hero-media">
-        <div class="media-placeholder">
-            Gameplay Trailer / GIF<br>(coming soon)
+        <div class="hero-media">
+            <video class="hero-video" controls poster="images/Trailer/Trailer_poster.png">
+                <source src="images/Trailer/Trailer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-    </div>
+
 </section>
 
 <div class="scroll-indicator fade-in">
@@ -100,19 +106,13 @@
         </div>
 
         <div class="phase-media">
-            <img src="images/rimuru.gif" alt="Phase 1 gameplay" class="phase-gif">
-            </div>
+            <img src="images/Gifs/phase 1.gif" alt="Phase 1 gameplay" class="phase-gif">
         </div>
     </div>
 
+
     <!-- PHASE 2 -->
     <div class="phase-row reverse fade-in">
-        <div class="phase-media">
-            <div class="media-placeholder">
-                Phase 2 GIF<br>(coming soon)
-            </div>
-        </div>
-
         <div class="phase-text">
             <h4>PHASE II — GALLERY</h4>
             <h2>Manage the floor and observe your guests.</h2>
@@ -120,6 +120,10 @@
                 Arrange paintings and sculptures on display, talk to NPCs, and learn their tastes. 
                 The relationships you build here affect how aggressively they bid during auctions.
             </p>
+        </div>
+
+        <div class="phase-media">
+            <img src="images/Gifs/phase 2.gif" alt="Phase 2 gameplay" class="phase-gif">
         </div>
     </div>
 
@@ -135,9 +139,7 @@
         </div>
 
         <div class="phase-media">
-            <div class="media-placeholder">
-                Phase 3 GIF<br>(coming soon)
-            </div>
+            <img src="images/Gifs/phase 3.gif" alt="Phase 3 gameplay" class="phase-gif">
         </div>
     </div>
 

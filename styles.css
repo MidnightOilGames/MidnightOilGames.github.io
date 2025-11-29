@@ -722,3 +722,58 @@ body.theme-dark .hero::before {
     opacity: 0.18; /* stronger for visibility */
 }
 
+/* Light mode — normal colored logo */
+body.theme-light .logo-img {
+    content: url("images/Icon Logo.png");   /* colored logo */
+    opacity: 1;
+}
+
+/* Dark mode — white logo */
+body.theme-dark .logo-img {
+    content: url("images/Icon Logo_White.png"); /* white version */
+    opacity: 0.9;
+
+}
+
+.phase-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.phase-text,
+.phase-media {
+    width: 48%; 
+}
+.timeline-media {
+    display: flex;
+    justify-content: center;   /* centers the GIF */
+    margin-top: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo and text */
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.logo img {
+    width: 40px;   /* adjust size */
+    height: 40px;  /* keep square */
+    object-fit: contain;
+    display: block;
+    border-radius: 6px; /* optional if you want rounded corners */
+}
+
+.hero-video {
+    width: 100%;
+    max-width: 850px;       /* ⬅️ make this bigger */
+    border-radius: 16px;
+    border: 2px solid var(--border-soft);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    display: block;
+}

@@ -9,11 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body class="dark">
+<body class="theme-dark">
 
 <header id="navbar">
-    <div class="logo">Midnight Oil</div>
-
+    <div class="logo">
+        <img class="logo-img" src="images/Icon Logo.png" alt="Logo">
+        <span>Midnight Oil</span>
+    </div>
     <nav>
         <a href="index.html" >Home</a>
         <a href="about.html" class="active">About</a>
@@ -57,8 +59,9 @@
 <!-- ======================
         GAME FEATURES
 ======================= -->
-<section class="phases-section">
+<section id="phases" class="phases-section">
 
+<!-- PHASE 1 -->
     <div class="phase-row fade-in">
         <div class="phase-text">
             <h4>INSPECTING ART</h4>
@@ -71,15 +74,13 @@
         </div>
 
         <div class="phase-media fade-in">
-            <div class="media-placeholder">Inspection GIF<br>(Coming Soon)</div>
+            <img src="images/Gifs/phase 1.gif" alt="Inspecting Art GIF" class="phase-gif">
         </div>
     </div>
 
-    <div class="phase-row reverse fade-in">
-        <div class="phase-media fade-in">
-            <div class="media-placeholder">Gallery GIF<br>(Coming Soon)</div>
-        </div>
 
+<!-- PHASE 2 -->
+    <div class="phase-row reverse fade-in">
         <div class="phase-text">
             <h4>GALLERY PHASE</h4>
             <h2>Organize your display and build relationships.</h2>
@@ -90,8 +91,13 @@
                 later in the auction.
             </p>
         </div>
+
+        <div class="phase-media fade-in">
+            <img src="images/Gifs/phase 2.gif" alt="Gallery Phase GIF" class="phase-gif">
+        </div>
     </div>
 
+    <!-- PHASE 3 -->
     <div class="phase-row fade-in">
         <div class="phase-text">
             <h4>AUCTION PHASE</h4>
@@ -105,9 +111,10 @@
         </div>
 
         <div class="phase-media fade-in">
-            <div class="media-placeholder">Auction GIF<br>(Coming Soon)</div>
+            <img src="images/Gifs/phase 3.gif" alt="Auction GIF" class="phase-gif">
         </div>
     </div>
+
 
 </section>
 
