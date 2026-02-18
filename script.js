@@ -168,6 +168,31 @@ window.addEventListener('scroll', () => {
 
 
 /* ============================
+   DEVLOG SORT TOGGLE
+============================ */
+
+const sortToggle = document.getElementById('sortToggle');
+const timelineContainer = document.querySelector('.timeline');
+
+if (sortToggle && timelineContainer) {
+    let newestFirst = true;
+
+    sortToggle.addEventListener('click', () => {
+        const entries = Array.from(timelineContainer.querySelectorAll('.timeline-entry'));
+        const comingSoon = entries[entries.length - 1];
+        const logEntries = entries.slice(0, -1);
+
+        logEntries.reverse().forEach(entry => {
+            timelineContainer.insertBefore(entry, comingSoon);
+        });
+
+        newestFirst = !newestFirst;
+        sortToggle.textContent = newestFirst ? 'Newest First ↓' : 'Oldest First ↑';
+    });
+}
+
+
+/* ============================
    PARALLAX-LITE ON HERO
 ============================ */
 

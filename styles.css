@@ -334,6 +334,18 @@ nav a.active {
     box-shadow: 0 8px 25px var(--glow-color);
 }
 
+.sort-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 32px;
+}
+
+.sort-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
 .hero-media {
     max-width: 45%;
     position: relative;
