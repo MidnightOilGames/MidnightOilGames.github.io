@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About – Going Once!</title>
-
+    <meta name="description" content="Learn about Going Once!, a cozy art dealership simulator built by Midnight Oil. Inspect art, manage your gallery, and run live auctions.">
+    <meta property="og:title" content="About – Going Once!">
+    <meta property="og:description" content="A narrative-light management sim where you run an art auction house.">
+    <meta property="og:image" content="images/Icon Logo.png">
+    <link rel="icon" href="images/Icon Logo.png">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="theme-dark">
+
+<div class="scroll-progress"></div>
 
 <header id="navbar">
     <div class="logo">
@@ -17,12 +23,20 @@
         <span>Midnight Oil</span>
     </div>
     <nav>
-        <a href="index.html" >Home</a>
+        <a href="index.html">Home</a>
         <a href="about.html" class="active">About</a>
         <a href="team.html">Team</a>
         <a href="devlog.html">Devlog</a>
         <a href="faq.html">FAQ</a>
     </nav>
+
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-overlay"></div>
 
     <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
         <span class="toggle-icon">🌙</span>
@@ -49,8 +63,8 @@
     <h2 class="section-title">What is Going Once!?</h2>
 
     <p class="section-subtitle" style="max-width: 900px; margin: 0 auto 40px;">
-        <strong>Going Once!</strong> is a narrative-light management sim where you run an 
-        art auction house: inspecting artwork, building relationships with buyers, and 
+        <strong>Going Once!</strong> is a narrative-light management sim where you run an
+        art auction house: inspecting artwork, building relationships with buyers, and
         running live high-stakes auctions where every choice affects your reputation.
     </p>
 </section>
@@ -68,7 +82,7 @@
             <h2>Use professional tools to uncover authenticity.</h2>
             <p>
                 Rotate, zoom, and examine each piece in detail using tools.
-                Find mismatched signatures, hidden 
+                Find mismatched signatures, hidden
                 markings, overpainting, and material inconsistencies.
             </p>
         </div>
@@ -85,9 +99,9 @@
             <h4>GALLERY PHASE</h4>
             <h2>Organize your display and build relationships.</h2>
             <p>
-                Before each auction, place your pieces in the gallery and interact with 
-                visiting NPCs. Every character has their own likes, dislikes, personality, 
-                and hidden motives. Learning these affects how aggressively they’ll bid 
+                Before each auction, place your pieces in the gallery and interact with
+                visiting NPCs. Every character has their own likes, dislikes, personality,
+                and hidden motives. Learning these affects how aggressively they'll bid
                 later in the auction.
             </p>
         </div>
@@ -103,9 +117,9 @@
             <h4>AUCTION PHASE</h4>
             <h2>Fast-paced bidding driven by personality-rich NPCs.</h2>
             <p>
-                Host dynamic auctions where NPCs bid based on their wealth, 
-                preferences, relationships, and past experiences. Use your auctioneer 
-                abilities to control the pace, hype the room, or calm things down. 
+                Host dynamic auctions where NPCs bid based on their wealth,
+                preferences, relationships, and past experiences. Use your auctioneer
+                abilities to control the pace, hype the room, or calm things down.
                 Sell a forgery or miss an important bid and your reputation may never recover.
             </p>
         </div>
@@ -123,7 +137,7 @@
         FOOTER
 ======================= -->
 <footer>
-    © 2025 Midnight Oil – Going Once!
+    &copy; 2025 Midnight Oil – Going Once!
 </footer>
 
 <script src="script.js"></script>

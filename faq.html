@@ -4,12 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ – Going Once!</title>
-
+    <meta name="description" content="Frequently asked questions about Going Once! — platforms, gameplay, target audience, and more.">
+    <meta property="og:title" content="FAQ – Going Once!">
+    <meta property="og:description" content="Everything you need to know about Going Once!">
+    <meta property="og:image" content="images/Icon Logo.png">
+    <link rel="icon" href="images/Icon Logo.png">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="theme-dark">
+
+<div class="scroll-progress"></div>
 
 <header id="navbar">
     <div class="logo">
@@ -21,8 +27,16 @@
         <a href="about.html">About</a>
         <a href="team.html">Team</a>
         <a href="devlog.html">Devlog</a>
-        <a href="faq.html"class="active">FAQ</a>
+        <a href="faq.html" class="active">FAQ</a>
     </nav>
+
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-overlay"></div>
 
     <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
         <span class="toggle-icon">🌙</span>
@@ -43,68 +57,98 @@
 
 
 <!-- ======================
-        FAQ LIST
+        FAQ LIST (ACCORDION)
 ======================= -->
 <section class="faq-section fade-in" style="padding-top: 40px;">
 
     <!-- Q1 -->
     <div class="faq-item fade-in">
-        <h3>What kind of game is Going Once!?</h3>
-        <p>
-            A cozy art-inspection and auction house simulator where you examine 
-            paintings, negotiate with NPCs, examine your gallery, and run intense live auctions.
-        </p>
+        <div class="faq-question">
+            <h3>What kind of game is Going Once!?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>
+                A cozy art-inspection and auction house simulator where you examine
+                paintings, negotiate with NPCs, manage your gallery, and run intense live auctions.
+            </p>
+        </div>
     </div>
 
     <!-- Q2 -->
     <div class="faq-item fade-in">
-        <h3>What platforms will it be available on?</h3>
-        <p>
-            PC (Steam).
-        </p>
+        <div class="faq-question">
+            <h3>What platforms will it be available on?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>PC (Steam).</p>
+        </div>
     </div>
 
     <!-- Q3 -->
     <div class="faq-item fade-in">
-        <h3>Does the game have a story?</h3>
-        <p>
-            Yes — a light narrative driven by recurring NPCs, their personalities, and your 
-            choices. Your reputation influences how characters treat you over time.
-        </p>
+        <div class="faq-question">
+            <h3>Does the game have a story?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>
+                Yes — a light narrative driven by recurring NPCs, their personalities, and your
+                choices. Your reputation influences how characters treat you over time.
+            </p>
+        </div>
     </div>
 
     <!-- Q4 -->
     <div class="faq-item fade-in">
-        <h3>Who is our target audience?</h3>
-        <p>
-            Our target audience are casual gamers around the age of 10 to 21 looking for a cozy management simulator game with elements of Papers, Please.
-            The game will feature buying art from NPCs, managing a gallery of art and auctioning off art.
-
-        </p>
+        <div class="faq-question">
+            <h3>Who is the target audience?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>
+                Casual gamers around the age of 10 to 21 looking for a cozy management simulator
+                with elements of Papers, Please. The game features buying art from NPCs,
+                managing a gallery, and auctioning off art.
+            </p>
+        </div>
     </div>
 
     <!-- Q5 -->
     <div class="faq-item fade-in">
-        <h3>Is there character customization?</h3>
-        <p>
-            Not currently, but it is in development for later releases.
-        </p>
+        <div class="faq-question">
+            <h3>Is there character customization?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>Not currently, but it is in development for later releases.</p>
+        </div>
     </div>
 
     <!-- Q6 -->
     <div class="faq-item fade-in">
-        <h3>What is the age rating for the game?</h3>
-        <p>
-            E for everyone (10+)
-        </p>
+        <div class="faq-question">
+            <h3>What is the age rating for the game?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>E for Everyone (10+).</p>
+        </div>
     </div>
 
     <!-- Q7 -->
     <div class="faq-item fade-in">
-        <h3>What languages are supported?</h3>
-        <p>
-            Only English currently, but we plan to make it more language inclusive in further development.
-        </p>
+        <div class="faq-question">
+            <h3>What languages are supported?</h3>
+            <span class="faq-arrow">&#9660;</span>
+        </div>
+        <div class="faq-answer">
+            <p>
+                Only English currently, but we plan to make it more language inclusive
+                in further development.
+            </p>
+        </div>
     </div>
 
 </section>
@@ -114,7 +158,7 @@
         FOOTER
 ======================= -->
 <footer>
-    © 2025 Midnight Oil – Going Once!
+    &copy; 2025 Midnight Oil – Going Once!
 </footer>
 
 <script src="script.js"></script>

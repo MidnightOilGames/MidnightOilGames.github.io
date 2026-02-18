@@ -24,6 +24,8 @@
     --footer-bg: #0a0a0a;
     --placeholder-text: #999999;
     --placeholder-border: #555555;
+
+    --glow-color: rgba(201, 106, 65, 0.3);
 }
 
 /* DARK THEME */
@@ -49,6 +51,8 @@ body.theme-dark {
     --footer-bg: #0a0a0a;
     --placeholder-text: #999999;
     --placeholder-border: #555555;
+
+    --glow-color: rgba(201, 106, 65, 0.35);
 }
 
 /* LIGHT THEME */
@@ -60,7 +64,7 @@ body.theme-light {
     --bg-hero: #f5eee4;
 
     --text-main: #222222;
-    --text-muted: #666666;
+    --text-muted: #555555;
 
     --border-soft: #d5ccc0;
     --border-card: #dad0c3;
@@ -70,11 +74,14 @@ body.theme-light {
     --accent-hover: #a54f2c;
     --accent-soft: #e7b28b;
 
-    --header-bg: rgba(255, 255, 255, 0.9);
+    --header-bg: rgba(255, 255, 255, 0.85);
     --footer-bg: #f0e6d8;
     --placeholder-text: #7a6b55;
     --placeholder-border: #c8bda8;
+
+    --glow-color: rgba(201, 106, 65, 0.2);
 }
+
 
 /* ============================
    GLOBAL RESET + BASE
@@ -84,6 +91,10 @@ body.theme-light {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -100,6 +111,22 @@ a {
 
 
 /* ============================
+   SCROLL PROGRESS BAR
+============================ */
+
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    z-index: 9999;
+    transition: width 0.05s linear;
+}
+
+
+/* ============================
    NAVBAR
 ============================ */
 
@@ -107,7 +134,8 @@ header {
     width: 100%;
     padding: 20px 50px;
     background: var(--header-bg);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -115,11 +143,23 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 26px;
     font-weight: 600;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    border-radius: 6px;
 }
 
 nav {
@@ -131,13 +171,66 @@ nav a {
     margin-left: 22px;
     color: var(--text-muted);
     font-weight: 400;
-    transition: 0.2s;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
 }
 
 nav a:hover,
 nav a.active {
     color: var(--accent-soft);
 }
+
+
+/* HAMBURGER MENU */
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 
 /* THEME TOGGLE BUTTON */
 
@@ -173,6 +266,8 @@ nav a.active {
     align-items: center;
     padding: 140px 10% 120px;
     min-height: 80vh;
+    position: relative;
+    overflow: hidden;
 }
 
 .dark-hero {
@@ -181,12 +276,18 @@ nav a.active {
 
 .hero-content {
     max-width: 50%;
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
     font-size: 70px;
     font-weight: 700;
     margin-bottom: 10px;
+    background: linear-gradient(135deg, var(--text-main) 0%, var(--accent-soft) 50%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .tagline {
@@ -206,12 +307,13 @@ nav a.active {
     color: white;
     border-radius: 8px;
     font-size: 18px;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
     background: var(--accent-hover);
     transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--glow-color);
 }
 
 .btn-outline {
@@ -221,7 +323,7 @@ nav a.active {
     font-size: 18px;
     color: var(--text-main);
     background: transparent;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
@@ -229,17 +331,13 @@ nav a.active {
     color: white;
     border-color: var(--accent);
     transform: translateY(-3px);
-}
-
-
-.btn-outline:hover {
-    background: var(--accent);
-    color: white;
-    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--glow-color);
 }
 
 .hero-media {
     max-width: 45%;
+    position: relative;
+    z-index: 1;
 }
 
 .media-placeholder {
@@ -298,7 +396,25 @@ nav a.active {
     padding: 28px;
     border-radius: 12px;
     border: 1px solid var(--border-card);
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+    transform: scaleX(1);
 }
 
 .feature-card h3 {
@@ -312,6 +428,7 @@ nav a.active {
 .feature-card:hover {
     border-color: var(--accent);
     transform: translateY(-5px);
+    box-shadow: 0 12px 30px var(--glow-color);
 }
 
 
@@ -326,9 +443,10 @@ nav a.active {
 
 .phase-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 140px;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 80px;
 }
 
 .phase-row.reverse {
@@ -336,6 +454,10 @@ nav a.active {
 }
 
 .phase-text {
+    width: 48%;
+}
+
+.phase-media {
     width: 48%;
 }
 
@@ -356,12 +478,23 @@ nav a.active {
     line-height: 1.7;
 }
 
-.phase-media {
-    width: 48%;
-}
-
 .phase-media .media-placeholder {
     height: 260px;
+}
+
+.phase-gif {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 14px;
+    border: 2px solid var(--border-soft);
+    object-fit: cover;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phase-gif:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -370,10 +503,18 @@ nav a.active {
 ============================ */
 
 .team-section {
-    padding: 40px 12% 60px;   /* top 40, sides 12%, bottom 60 */
+    padding: 40px 12% 60px;
     background: var(--bg-panel);
 }
 
+.team-category {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
 
 .team-grid {
     display: flex;
@@ -389,6 +530,13 @@ nav a.active {
     border-radius: 12px;
     text-align: center;
     border: 1px solid var(--border-card);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 30px var(--glow-color);
 }
 
 .team-card h3 {
@@ -397,6 +545,23 @@ nav a.active {
 
 .team-card p {
     color: var(--text-muted);
+}
+
+.team-portrait {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid var(--border-soft);
+    background-color: var(--surface);
+    margin-bottom: 12px;
+    display: block;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-portrait {
+    transform: scale(1.03);
 }
 
 .portrait-placeholder {
@@ -414,7 +579,7 @@ nav a.active {
 
 
 /* ============================
-   FAQ SECTION
+   FAQ SECTION — ACCORDION
 ============================ */
 
 .faq-section {
@@ -423,22 +588,71 @@ nav a.active {
 }
 
 .faq-item {
-    margin-bottom: 40px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-card);
+    transition: border-color 0.3s ease;
 }
 
-.faq-item h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+.faq-item:hover {
+    border-color: var(--accent);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.faq-question:hover {
+    background: rgba(201, 106, 65, 0.05);
+}
+
+.faq-question h3 {
+    font-size: 20px;
     color: var(--accent);
+    margin: 0;
+    flex: 1;
 }
 
-.faq-item p {
-    color: var(--text-main);
+.faq-arrow {
+    font-size: 18px;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+    margin-left: 16px;
+    flex-shrink: 0;
+}
+
+.faq-item.open .faq-arrow {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 24px;
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px;
+    padding: 0 24px 20px;
+}
+
+.faq-answer p {
+    color: var(--text-muted);
+    line-height: 1.7;
 }
 
 
 /* ============================
-   DEVLOG TIMELINE (basic)
+   DEVLOG TIMELINE
 ============================ */
 
 .timeline {
@@ -453,6 +667,12 @@ nav a.active {
     border-radius: 12px;
     border: 1px solid var(--border-card);
     padding: 20px 24px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-entry:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px var(--glow-color);
 }
 
 .timeline-date {
@@ -470,6 +690,12 @@ nav a.active {
 .timeline-content p {
     color: var(--text-muted);
     margin-bottom: 14px;
+}
+
+.timeline-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .timeline-media .media-placeholder {
@@ -491,7 +717,7 @@ footer {
 
 
 /* ============================
-   ANIMATIONS (for script.js)
+   ANIMATIONS
 ============================ */
 
 .fade-in,
@@ -499,26 +725,36 @@ footer {
 .slide-right,
 .slide-up {
     opacity: 0;
+    transition: opacity 0.1s ease;
 }
 
 .fade-in.active {
-    animation: fadeIn 1.4s ease forwards;
+    animation: fadeIn 1s ease forwards;
 }
 
 .slide-left.active {
-    animation: slideLeft 1.2s ease forwards;
+    animation: slideLeft 0.8s ease forwards;
 }
 
 .slide-right.active {
-    animation: slideRight 1.2s ease forwards;
+    animation: slideRight 0.8s ease forwards;
 }
 
 .slide-up.active {
-    animation: slideUp 1.2s ease forwards;
+    animation: slideUp 0.8s ease forwards;
 }
 
+/* Staggered delays for cards */
+.stagger-1 { animation-delay: 0s !important; }
+.stagger-2 { animation-delay: 0.15s !important; }
+.stagger-3 { animation-delay: 0.3s !important; }
+.stagger-4 { animation-delay: 0.45s !important; }
+.stagger-5 { animation-delay: 0.6s !important; }
+.stagger-6 { animation-delay: 0.75s !important; }
+
 @keyframes fadeIn {
-    to { opacity: 1; }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideLeft {
@@ -534,6 +770,139 @@ footer {
 @keyframes slideUp {
     from { transform: translateY(40px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* ============================
+   SCROLL INDICATOR
+============================ */
+
+.scroll-indicator {
+    position: relative;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+    animation: fadeInSimple 1.5s ease forwards;
+}
+
+@keyframes fadeInSimple {
+    to { opacity: 0.7; }
+}
+
+.scroll-arrow {
+    width: 22px;
+    height: 22px;
+    border-left: 3px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
+    transform: rotate(-45deg);
+    animation: arrowFloat 1.5s infinite ease-in-out;
+}
+
+@keyframes arrowFloat {
+    0%   { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+    50%  { transform: translateY(8px) rotate(-45deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+}
+
+body.scrolled .scroll-indicator {
+    opacity: 0 !important;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+
+/* ============================
+   HERO BACKGROUND LOGO
+============================ */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    width: 750px;
+    height: 750px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+#home.hero::before {
+    display: none !important;
+}
+
+body.theme-light .hero::before {
+    background-image: url("images/Full Logo.png");
+    opacity: 0.11;
+}
+
+body.theme-dark .hero::before {
+    background-image: url("images/Full Logo_White.png");
+    opacity: 0.18;
+}
+
+body.theme-light .logo-img {
+    content: url("images/Icon Logo.png");
+    opacity: 1;
+}
+
+body.theme-dark .logo-img {
+    content: url("images/Icon Logo_White.png");
+    opacity: 0.9;
+}
+
+
+/* ============================
+   HERO VIDEO — ANIMATED BORDER
+============================ */
+
+.hero-video-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 18px;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-soft), var(--accent));
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-video {
+    width: 100%;
+    max-width: 850px;
+    border-radius: 16px;
+    display: block;
+}
+
+
+/* ============================
+   REDUCED MOTION
+============================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .fade-in, .slide-left, .slide-right, .slide-up {
+        opacity: 1;
+    }
+
+    .scroll-progress {
+        transition: none;
+    }
 }
 
 
@@ -582,18 +951,57 @@ footer {
     .phase-media {
         width: 100%;
     }
+
+    /* Mobile nav */
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: var(--bg-panel);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 30px 30px;
+        border-left: 1px solid var(--border-soft);
+        transition: right 0.35s ease;
+        z-index: 999;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    }
+
+    nav.open {
+        right: 0;
+    }
+
+    nav a {
+        margin-left: 0;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+
+    .nav-overlay.active {
+        display: block;
+    }
 }
 
 @media (max-width: 600px) {
     header {
         padding: 14px 18px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    nav a {
-        margin-left: 14px;
-        font-size: 14px;
     }
 
     .hero h1 {
@@ -603,177 +1011,8 @@ footer {
     .tagline {
         font-size: 18px;
     }
-}
 
-/* Team category labels */
-.team-category {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    text-align: center;
-    letter-spacing: 2px;
-    color: var(--accent);
-}
-
-/* Hover animation for team cards */
-.team-card {
-    transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.team-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent);
-}
-
-/* ==========================
-   Scroll Indicator Arrow
-========================== */
-
-.scroll-indicator {
-    position: relative;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    opacity: 0.7;
-    animation: fadeIn 1.5s ease forwards;
-}
-
-.scroll-arrow {
-    width: 22px;
-    height: 22px;
-    border-left: 3px solid var(--accent);
-    border-bottom: 3px solid var(--accent);
-    transform: rotate(-45deg);
-    animation: arrowFloat 1.5s infinite ease-in-out;
-}
-
-@keyframes arrowFloat {
-    0%   { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
-    50%  { transform: translateY(8px) rotate(-45deg); opacity: 1; }
-    100% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
-}
-
-body.scrolled .scroll-indicator {
-    opacity: 0 !important;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
-.phase-gif {
-    width: 100%;
-    max-width: 480px;
-    border-radius: 14px;
-    border: 2px solid var(--border-soft);
-    object-fit: cover;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
-}
-
-.team-portrait {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 2px solid var(--border-soft);
-    background-color: var(--surface);
-    margin-bottom: 12px;
-    display: block;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-}
-
-/* =======================================
-   GIANT FADED BACKGROUND LOGO FOR HERO
-   ======================================= */
-
-.hero {
-    position: relative; /* required so ::before can attach */
-    overflow: hidden;   /* prevents logo from sticking out */
-}
-
-/* Move logo to the right side of the hero */
-.hero::before {
-    content: "";
-    position: absolute;
-    right: 5%;           /* move toward the right edge */
-    top: 50%;            /* center vertically */
-    width: 750px;
-    height: 750px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    transform: translateY(-50%); /* vertical centering only */
-    pointer-events: none;
-    z-index: 0;
-}
-
-#home.hero::before {
-    display: none !important;
-}
-
-
-/* Light mode → normal logo */
-body.theme-light .hero::before {
-    background-image: url("images/Full Logo.png");
-    opacity: 0.11;
-}
-
-/* Dark mode → white logo */
-body.theme-dark .hero::before {
-    background-image: url("images/Full Logo_White.png");
-    opacity: 0.18; /* stronger for visibility */
-}
-
-/* Light mode — normal colored logo */
-body.theme-light .logo-img {
-    content: url("images/Icon Logo.png");   /* colored logo */
-    opacity: 1;
-}
-
-/* Dark mode — white logo */
-body.theme-dark .logo-img {
-    content: url("images/Icon Logo_White.png"); /* white version */
-    opacity: 0.9;
-
-}
-
-.phase-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    margin-bottom: 80px;
-}
-
-.phase-text,
-.phase-media {
-    width: 48%; 
-}
-.timeline-media {
-    display: flex;
-    justify-content: center;   /* centers the GIF */
-    margin-top: 20px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* space between logo and text */
-    font-size: 26px;
-    font-weight: 600;
-}
-
-.logo img {
-    width: 40px;   /* adjust size */
-    height: 40px;  /* keep square */
-    object-fit: contain;
-    display: block;
-    border-radius: 6px; /* optional if you want rounded corners */
-}
-
-.hero-video {
-    width: 100%;
-    max-width: 850px;       /* ⬅️ make this bigger */
-    border-radius: 16px;
-    border: 2px solid var(--border-soft);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
-    display: block;
+    .faq-question h3 {
+        font-size: 17px;
+    }
 }
