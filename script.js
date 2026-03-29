@@ -179,17 +179,48 @@ if (sortToggle && timelineContainer) {
 
     sortToggle.addEventListener('click', () => {
         const entries = Array.from(timelineContainer.querySelectorAll('.timeline-entry'));
-        const comingSoon = entries[entries.length - 1];
-        const logEntries = entries.slice(0, -1);
 
-        logEntries.reverse().forEach(entry => {
-            timelineContainer.insertBefore(entry, comingSoon);
+        entries.reverse().forEach(entry => {
+            timelineContainer.appendChild(entry);
         });
 
         newestFirst = !newestFirst;
         sortToggle.textContent = newestFirst ? 'Newest First ↓' : 'Oldest First ↑';
     });
 }
+
+
+/* ============================
+   LIGHTBOX FOR MEDIA
+============================ */
+
+const lightbox = document.createElement('div');
+lightbox.className = 'lightbox';
+document.body.appendChild(lightbox);
+
+// Click media to open lightbox
+document.querySelectorAll('.timeline-media img, .timeline-media video').forEach(media => {
+    media.addEventListener('click', () => {
+        if (media.tagName === 'VIDEO') {
+            const vid = document.createElement('video');
+            vid.src = media.querySelector('source').src;
+            vid.autoplay = true;
+            vid.loop = true;
+            vid.muted = true;
+            lightbox.innerHTML = '';
+            lightbox.appendChild(vid);
+        } else {
+            lightbox.innerHTML = '<img src="' + media.src + '" alt="' + media.alt + '">';
+        }
+        lightbox.classList.add('active');
+    });
+});
+
+// Click overlay to close
+lightbox.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+    lightbox.innerHTML = '';
+});
 
 
 /* ============================

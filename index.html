@@ -15,6 +15,12 @@
 </head>
 
 <body class="theme-dark">
+<script>
+    const saved = localStorage.getItem('goingonce-theme');
+    if (saved === 'light') {
+        document.body.className = 'theme-light';
+    }
+</script>
 
 <div class="scroll-progress"></div>
 
@@ -66,8 +72,8 @@
 
         <div class="hero-media">
             <div class="hero-video-wrapper">
-                <video class="hero-video" controls poster="images/Trailer/Trailer_poster.png">
-                    <source src="images/Trailer/Trailer.mp4" type="video/mp4">
+                <video class="hero-video" controls >
+                    <source src="videos/Updated Trailer.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
@@ -89,7 +95,7 @@
     <div class="feature-grid">
         <div class="feature-card slide-left">
             <h3>🔍 Inspect Fine Art</h3>
-            <p>Rotate, zoom, and examine each piece using tools. Uncover frauds, hidden markings, and suspicious signatures.</p>
+            <p>Use tools to discover tags on each art piece and uncover its true value. Haggle with sellers for a lower price.</p>
         </div>
 
         <div class="feature-card slide-up">
@@ -99,7 +105,7 @@
 
         <div class="feature-card slide-right">
             <h3>🔨 Run Live Auctions</h3>
-            <p>Accept bids, activate auctioneer abilities, and manage NPC behavior in fast-paced bidding rounds.</p>
+            <p>Watch NPCs auto-bid on your art while you handle quick time events to keep the auction going.</p>
         </div>
     </div>
 </section>
@@ -122,7 +128,9 @@
         </div>
 
         <div class="phase-media">
-            <img src="images/Gifs/phase 1.gif" alt="Phase 1 gameplay" class="phase-gif">
+            <video class="phase-video" muted autoplay loop playsinline>
+                <source src="videos/Updated Phase1.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
 
@@ -139,7 +147,9 @@
         </div>
 
         <div class="phase-media">
-            <img src="images/Gifs/phase 2.gif" alt="Phase 2 gameplay" class="phase-gif">
+            <video class="phase-video" muted autoplay loop playsinline>
+                <source src="videos/Updated Phase2.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
 
@@ -149,13 +159,15 @@
             <h4>PHASE III — AUCTION</h4>
             <h2>Under the spotlight, every choice is public.</h2>
             <p>
-                Accept bids on time, manage the pacing of the auction, and use auctioneer abilities
-                to hype or calm the room. Sell a forgery or misjudge a bid and your reputation may never recover.
+                NPCs auto-bid on your art pieces while you react to quick time events
+                that affect the final sale price. Keep up with the pace or watch your profits slip.
             </p>
         </div>
 
         <div class="phase-media">
-            <img src="images/Gifs/phase 3.gif" alt="Phase 3 gameplay" class="phase-gif">
+            <video class="phase-video" muted autoplay loop playsinline>
+                <source src="videos/Updated Phase3.mp4" type="video/mp4">
+            </video>
         </div>
     </div>
 
