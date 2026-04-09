@@ -196,6 +196,28 @@ nav a.active {
     color: var(--accent-soft);
 }
 
+.nav-play-btn {
+    margin-left: 22px;
+    padding: 6px 18px;
+    background: var(--accent);
+    color: white !important;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-play-btn::after {
+    display: none !important;
+}
+
+.nav-play-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--glow-color);
+    color: white !important;
+}
+
 
 /* HAMBURGER MENU */
 
