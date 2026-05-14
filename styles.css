@@ -127,6 +127,62 @@ a {
 
 
 /* ============================
+   STEAM BANNER
+============================ */
+
+.steam-banner {
+    width: 100%;
+    background: linear-gradient(90deg, #1a0a00, #c96a41, #1a0a00);
+    color: #fff;
+    text-align: center;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 1100;
+}
+
+.steam-banner-text {
+    color: #fff;
+}
+
+.steam-banner-text em {
+    font-style: normal;
+    color: #ffe0cc;
+}
+
+.steam-banner-btn {
+    background: #fff;
+    color: #c96a41;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+}
+
+.steam-banner-btn:hover {
+    background: #ffe0cc;
+    color: #8b3e1f;
+}
+
+@media (max-width: 600px) {
+    .steam-banner {
+        font-size: 0.82rem;
+        padding: 10px 14px;
+        gap: 10px;
+    }
+}
+
+/* ============================
    NAVBAR
 ============================ */
 
@@ -165,6 +221,9 @@ header {
 nav {
     display: flex;
     align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 nav a {
