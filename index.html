@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Going Once! – Midnight Oil</title>
+    <meta name="description" content="Going Once! is a cozy art-inspection and auction house simulator by Midnight Oil. Inspect art, curate your gallery, and run live auctions.">
+    <meta property="og:title" content="Going Once! – Midnight Oil">
+    <meta property="og:description" content="A cozy art-inspection & auction house simulator. Inspect fine art, arrange your gallery, and run live auctions.">
+    <meta property="og:image" content="images/Icon Logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="images/Icon Logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="theme-dark">
+<script>
+    const saved = localStorage.getItem('goingonce-theme');
+    if (saved === 'light') {
+        document.body.className = 'theme-light';
+    }
+</script>
+
+<div class="scroll-progress"></div>
+
+<!-- ======================
+        NAVBAR
+======================= -->
+<header id="navbar">
+<div class="logo">
+    <img class="logo-img" src="images/Icon Logo.png" alt="Logo">
+    <span>Midnight Oil</span>
+</div>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="team.html">Team</a>
+        <a href="devlog.html">Devlog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="https://store.steampowered.com/app/4706400/Going_Once/" target="_blank" class="nav-play-btn">Play on Steam</a>
+    </nav>
+
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-overlay"></div>
+
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <span class="toggle-icon">🌙</span>
+        <span class="toggle-label">Dark</span>
+    </button>
+</header>
+
+
+
+
+<!-- ======================
+        HERO SECTION
+======================= -->
+<section id="home" class="hero dark-hero fade-in">
+    <div class="hero-content">
+        <h1>GOING ONCE!</h1>
+        <p class="tagline">A cozy art-inspection & auction house simulator.</p>
+
+        <div class="hero-buttons">
+            <a href="https://store.steampowered.com/app/4706400/Going_Once/" target="_blank" class="btn">Play on Steam</a>
+            <a href="#game" class="btn-outline">Learn About the Game</a>
+            <a href="#phases" class="btn-outline">See the Gameplay Loop</a>
+        </div>
+    </div>
+
+        <div class="hero-media">
+            <div class="hero-video-wrapper">
+                <iframe class="hero-video" src="https://www.youtube.com/embed/Ga7MN75xjdA" title="Going Once! Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    <div class="scroll-indicator fade-in">
+        <span class="scroll-arrow"></span>
+    </div>
+</section>
+
+<!-- ======================
+        CORE EXPERIENCE
+======================= -->
+<section id="game" class="core-section fade-in">
+    <h2 class="section-title">Inspect. Curate. Auction.</h2>
+    <p class="section-subtitle">Running an art auction house has never been more intense—or cozy.</p>
+
+    <div class="feature-grid">
+        <div class="feature-card slide-left">
+            <h3>🔍 Inspect Fine Art</h3>
+            <p>Use tools to discover tags on each art piece and uncover its true value. Haggle with sellers for a lower price.</p>
+        </div>
+
+        <div class="feature-card slide-up">
+            <h3>🏛️ Arrange Your Gallery</h3>
+            <p>Arrange pieces in your showroom, learn NPC preferences through dialogue, and prepare your gallery for auction night.</p>
+        </div>
+
+        <div class="feature-card slide-right">
+            <h3>🔨 Run Live Auctions</h3>
+            <p>Watch NPCs auto-bid on your art while you handle quick time events to keep the auction going.</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ======================
+        GAME PHASES
+======================= -->
+<section id="phases" class="phases-section">
+
+    <!-- PHASE 1 -->
+    <div class="phase-row fade-in">
+        <div class="phase-text">
+            <h4>PHASE I — BUYING</h4>
+            <h2>Backroom deals and risky purchases.</h2>
+            <p>
+                Meet sellers, inspect their art using the tools, and decide
+                whether to buy, haggle, or reject.
+            </p>
+        </div>
+
+        <div class="phase-media">
+            <video class="phase-video" muted autoplay loop playsinline>
+                <source src="videos/Updated Phase1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+
+    <!-- PHASE 2 -->
+    <div class="phase-row reverse fade-in">
+        <div class="phase-text">
+            <h4>PHASE II — GALLERY</h4>
+            <h2>Manage the floor and observe your guests.</h2>
+            <p>
+                Arrange paintings and sculptures on display, talk to NPCs, and learn their tastes.
+                The relationships you build here affect how aggressively they bid during auctions.
+            </p>
+        </div>
+
+        <div class="phase-media">
+            <video class="phase-video" muted autoplay loop playsinline>
+                <source src="videos/Updated Phase2.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase-row fade-in">
+        <div class="phase-text">
+            <h4>PHASE III — AUCTION</h4>
+            <h2>Under the spotlight, every choice is public.</h2>
+            <p>
+                NPCs auto-bid on your art pieces while you react to quick time events
+                that affect the final sale price. Keep up with the pace or watch your profits slip.
+            </p>
+        </div>
+
+        <div class="phase-media">
+            <video class="phase-video" muted autoplay loop playsinline>
+                <source src="videos/Updated Phase3.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+</section>
+
+<!-- ======================
+        FOOTER
+======================= -->
+<footer>
+    &copy; 2025 Midnight Oil — Going Once!
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
