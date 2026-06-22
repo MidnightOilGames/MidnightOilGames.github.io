@@ -428,7 +428,7 @@ nav a.active {
 }
 
 .hero-media {
-    max-width: 45%;
+    width: 45%;
     position: relative;
     z-index: 1;
 }
@@ -959,12 +959,15 @@ footer {
 ============================ */
 
 .scroll-indicator {
-    position: relative;
-    margin-top: 40px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     opacity: 0.7;
     animation: fadeInSimple 1.5s ease forwards;
+    z-index: 10;
 }
 
 @keyframes fadeInSimple {
@@ -1043,7 +1046,9 @@ body.theme-dark .logo-img {
 
 .hero-video-wrapper {
     position: relative;
-    display: inline-block;
+    display: block;
+    width: 100%;
+    max-width: 850px;
     border-radius: 18px;
     padding: 3px;
     background: linear-gradient(135deg, var(--accent), var(--accent-soft), var(--accent));
@@ -1059,9 +1064,9 @@ body.theme-dark .logo-img {
 
 .hero-video {
     width: 100%;
-    max-width: 850px;
     border-radius: 16px;
     display: block;
+    aspect-ratio: 16 / 9;
 }
 
 
